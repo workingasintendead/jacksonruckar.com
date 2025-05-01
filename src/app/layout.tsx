@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import Navbar from '../components/nav/Navbar';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,11 +27,12 @@ function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="custom-scrollbar">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Navbar />
+        <main className="min-h-[calc(100vh-85px)]">{children}</main>
       </body>
     </html>
   );
