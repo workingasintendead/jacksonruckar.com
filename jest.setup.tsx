@@ -4,9 +4,10 @@ jest.mock('next/image', () => ({
   __esModule: true,
   default: ({
     fill,
+    priority,
     alt,
     ...props
-  }: React.ComponentProps<'img'> & { fill?: boolean }) => {
+  }: React.ComponentProps<'img'> & { fill?: boolean; priority?: boolean }) => {
     if (fill) {
       return (
         <div style={{ position: 'relative', width: '100%', height: '100%' }}>
@@ -37,3 +38,7 @@ jest.mock('next/link', () => {
     },
   };
 });
+
+jest.mock('next/navigation', () => ({
+  usePathname: jest.fn(),
+}));

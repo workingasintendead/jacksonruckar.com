@@ -7,6 +7,7 @@ const IgIcon: React.FC = () => (
     target="_blank"
     rel="noopener noreferrer"
     className="text-white hover:text-pink-500 transition-colors duration-500"
+    aria-label="Jackson Ruckar's Instagram"
   >
     <FaInstagram size={24} />
   </Link>
