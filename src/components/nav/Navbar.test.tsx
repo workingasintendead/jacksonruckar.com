@@ -8,7 +8,7 @@ describe('Navbar', () => {
     expect(screen.getByRole('navigation')).toBeInTheDocument();
   });
 
-  it('renders the HomeLogo with the correct src and default size (100px)', () => {
+  it('renders the HomeLogo with the correct src and passed size(65px)', () => {
     render(<Navbar />);
     const img = screen.getByRole('img', { name: 'Jackson Ruckar Logo' });
 
