@@ -1,7 +1,11 @@
 import { FaInstagram } from 'react-icons/fa';
 import Link from 'next/link';
 
-const IgIcon: React.FC = () => (
+interface IgIconProps {
+  size?: number;
+}
+
+const IgIcon: React.FC<IgIconProps> = ({ size = 24 }) => (
   <Link
     href="https://www.instagram.com/jacksonruckar"
     target="_blank"
@@ -9,7 +13,7 @@ const IgIcon: React.FC = () => (
     className="text-white hover:text-pink-500 transition-colors duration-500"
     aria-label="Jackson Ruckar's Instagram"
   >
-    <FaInstagram size={24} />
+    <FaInstagram size={size} />
   </Link>
 );
 
