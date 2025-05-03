@@ -1,5 +1,7 @@
 {
-  "middleware": {
-    "env": ["MAINTENANCE_MODE"]
+  "functions": {
+    "middleware": {
+      "env": ["MAINTENANCE_MODE", "NODE_ENV"]
+    }
   }
 }
