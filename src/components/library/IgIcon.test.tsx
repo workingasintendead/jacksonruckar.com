@@ -21,4 +21,21 @@ describe('IgIcon', () => {
 
     expect(svg).toBeInTheDocument();
   });
+
+  it('renders the Instagram icon with the default size of 24px', () => {
+    const { container } = render(<IgIcon />);
+    const svg = container.querySelector('svg');
+
+    expect(svg).toHaveAttribute('width', '24');
+    expect(svg).toHaveAttribute('height', '24');
+  });
+
+  it('renders the Instagram icon with a custom size', () => {
+    const { container } = render(<IgIcon size={65} />);
+    const svg = container.querySelector('svg');
+
+    expect(svg).toBeInTheDocument();
+    expect(svg).toHaveAttribute('width', '65');
+    expect(svg).toHaveAttribute('height', '65');
+  });
 });

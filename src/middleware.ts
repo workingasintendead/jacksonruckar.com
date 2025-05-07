@@ -2,28 +2,21 @@ import { NextRequest, NextResponse } from 'next/server';
 import { get } from '@vercel/edge-config';
 
 export const config = {
-  matcher: ['/(.*)'],
+  matcher: ['/((?!_next|static|favicon.ico|maintenance|.*\\..*).*)'],
 };
+
+interface MaintenanceConfig {
+  enabled: boolean;
+}
 
 export async function middleware(req: NextRequest) {
   if (process.env.NODE_ENV !== 'production') {
     return NextResponse.next();
   }
 
-  const maintenance = await get('maintenance');
-  const { pathname } = req.nextUrl;
+  const maintenance = await get<MaintenanceConfig>('maintenance');
 
-  if (
-    pathname.startsWith('/_next') ||
-    pathname.startsWith('/static') ||
-    pathname === '/favicon.ico' ||
-    pathname === '/maintenance' ||
-    pathname.includes('.')
-  ) {
-    return NextResponse.next();
-  }
-
-  if (maintenance) {
+  if (maintenance?.enabled) {
     return NextResponse.redirect(new URL('/maintenance', req.url));
   }
 
