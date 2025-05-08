@@ -10,6 +10,17 @@ interface FormData {
   message: string;
 }
 
+const fields: Array<{
+  label: string;
+  name: keyof FormData;
+  type: string;
+}> = [
+  { label: 'Name', name: 'name', type: 'text' },
+  { label: 'Email', name: 'email', type: 'email' },
+  { label: 'Phone', name: 'phone', type: 'tel' },
+  { label: 'Tentative Date', name: 'tentativeDate', type: 'date' },
+];
+
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -21,6 +32,16 @@ const ContactPage: React.FC = () => {
 
   const [statusMessage, setStatusMessage] = useState('');
   const [fadeOut, setFadeOut] = useState(false);
+
+  useEffect(() => {
+    if (statusMessage) {
+      setFadeOut(false);
+      const timer = setTimeout(() => {
+        setFadeOut(true);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [statusMessage]);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -60,27 +81,6 @@ const ContactPage: React.FC = () => {
       setStatusMessage('Error occurred while sending message.');
     }
   };
-
-  useEffect(() => {
-    if (statusMessage) {
-      setFadeOut(false);
-      const timer = setTimeout(() => {
-        setFadeOut(true);
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [statusMessage]);
-
-  const fields: Array<{
-    label: string;
-    name: keyof FormData;
-    type: string;
-  }> = [
-    { label: 'Name', name: 'name', type: 'text' },
-    { label: 'Email', name: 'email', type: 'email' },
-    { label: 'Phone', name: 'phone', type: 'tel' },
-    { label: 'Tentative Date', name: 'tentativeDate', type: 'date' },
-  ];
 
   return (
     <div className="min-h-screen px-4 pt-[100px] pb-10 bg-[#0a0a0a] text-white">
