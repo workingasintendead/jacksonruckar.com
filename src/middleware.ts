@@ -10,7 +10,10 @@ interface MaintenanceConfig {
 }
 
 export async function middleware(req: NextRequest) {
-  if (process.env.NODE_ENV !== 'production') {
+  if (
+    process.env.VERCEL_ENV === 'preview' ||
+    process.env.NODE_ENV === 'development'
+  ) {
     return NextResponse.next();
   }
 

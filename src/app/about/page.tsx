@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import AboutImage from '../../images/AboutImage.jpg';
 import ClientList from '../../components/ClientList';
 import clients from '../../data/clients';
 
@@ -7,10 +8,10 @@ function AboutPage() {
     <div className="min-h-screen px-6 pt-[100px] pb-6">
       <div className="max-w-3xl mx-auto flex flex-col items-center gap-4">
         <Image
-          src="/AboutImage.jpg"
+          src={AboutImage}
           alt="Jackson"
-          width={800}
-          height={600}
+          width={828}
+          height={373}
           priority
           className="w-full h-auto object-cover rounded"
         />

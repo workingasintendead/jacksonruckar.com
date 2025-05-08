@@ -10,12 +10,11 @@ describe('Navbar', () => {
 
   it('renders the HomeLogo with the correct src and passed size(65px)', () => {
     render(<Navbar />);
-    const img = screen.getByRole('img', { name: 'Jackson Ruckar Logo' });
+    const svg = screen.getByRole('img', { name: 'Jackson Ruckar Logo' });
 
-    expect(img).toBeInTheDocument();
-    expect(img).toHaveAttribute('src', '/JRRuneLogo.svg');
-    expect(img).toHaveAttribute('width', '65');
-    expect(img).toHaveAttribute('height', '65');
+    expect(svg).toBeInTheDocument();
+    expect(svg).toHaveAttribute('width', '65');
+    expect(svg).toHaveAttribute('height', '65');
   });
 
   it('renders all navigation links', () => {
