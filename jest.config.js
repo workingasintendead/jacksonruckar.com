@@ -12,4 +12,7 @@ module.exports = {
   testPathIgnorePatterns: ['<rootDir>/tests/'],
   testMatch: ['<rootDir>/src/**/*.test.(ts|tsx)'],
   collectCoverage: true,
+  moduleNameMapper: {
+    '\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/__mocks__/ImageMock.js',
+  },
 };
